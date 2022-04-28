@@ -133,35 +133,6 @@ tr=BeautifulSoup(tr,"lxml")
 tr=tr.find_all("a", class_="d-lg-none font-bold tw-w-12")
 print(tr)
 tr=list(tr)
-for line in range(len(tr)):
-    #print(tr)
-    ere=f'e{line}_trplace=str(tr[{line}]).replace("[","").replace("]","").split("href=")'
-    exec(ere)
-    ewae=f"print(e{line}_trplace)"
-    exec(ewae)
-    x=f"x=e{line}_trplace[1]"
-    #print(x)
-    exec(x)
-    #print(x)
-    x=x.replace('"','')
-    x=x.split(">")
-    x=x[0]
-    x=x.split("/")
-    ere=f'e{line}_trplace=x'
-    exec(ere)
-    ere=f'e{line}_trplace=e{line}_trplace[3]'
-    exec(ere)
-    ere=f"e{line}_4lettercode=str(tr[{line}]).split('>')"
-    exec(ere)
-    ere=f"e{line}_4lettercode=e{line}_4lettercode[1]"
-    exec(ere)
-    x=f"x=str(e{line}_4lettercode)"
-    exec(x)
-    x=x.replace("\n","").replace("</a","")
-    ere=f"e{line}_4lettercode=x"
-    exec(ere)
-
-time.sleep(100)
 # url = "https://www.coingecko.com/"
 # crawl(url)
 #crypto_currnecy argument: e.g: LUNA1
@@ -293,20 +264,39 @@ def price_pred(crypto_name,crypto_currnecy,*args):
                 d=driver.find_element(By.XPATH,'//*[@id="__next"]/div[2]/div[2]/section/div[2]/div/main/form/div[2]/div[1]/p[1]').text
                 print(d)
             predictionlist.append(prediction)
-            month = datetime.now().month
-         
+            month = datetime.now().month         
     return main
-xrp=price_pred("xrp","XRP",30)
-xrp()
-bean=price_pred("bean","BEAN")
-bean()
+for line in range(len(tr)):
+    #print(tr)
+    ere=f'e{line}_trplace=str(tr[{line}]).replace("[","").replace("]","").split("href=")'
+    exec(ere)
+    ewae=f"print(e{line}_trplace)"
+    exec(ewae)
+    x=f"x=e{line}_trplace[1]"
+    #print(x)
+    exec(x)
+    #print(x)
+    x=x.replace('"','')
+    x=x.split(">")
+    x=x[0]
+    x=x.split("/")
+    ere=f'e{line}_trplace=x'
+    exec(ere)
+    ere=f'e{line}_trplace=e{line}_trplace[3]'
+    exec(ere)
+    ere=f"e{line}_4lettercode=str(tr[{line}]).split('>')"
+    exec(ere)
+    ere=f"e{line}_4lettercode=e{line}_4lettercode[1]"
+    exec(ere)
+    x=f"x=str(e{line}_4lettercode)"
+    exec(x)
+    x=x.replace("\n","").replace("</a","")
+    ere=f"e{line}_4lettercode=x"
+    exec(ere)
+    ere=f"yx=e{line}_trplace"
+    exec(ere)
+    s=price_pred(yx,x,30)
 #sandp=price_pred("sandp","^GSPC")
-black_coin=price_pred("blackcoin","BLK",30)
-black_coin()
-the_graph=price_pred("the-graph","GRT",30,60,90)
-the_graph()
-pancakeswap=price_pred("pancakeswap","CAKE",30)
-pancakeswap()
 num1=min(comparevals)
 print(num1)
 print(comparevals)
